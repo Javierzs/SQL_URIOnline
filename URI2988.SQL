@@ -60,3 +60,6 @@ as score
 FROM teams team
 ORDER BY score DESC
  
+SUBMISSION # 24830992
+PROBLEM: 2988 - Cearense Championship
+ANSWER: Accepted
