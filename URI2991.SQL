@@ -23,8 +23,8 @@ group by e.nome)  as tdasd)
 	left join desconto dc
 	on dc.cod_desc = ed.cod_desc
 	where e.lotacao = depart.cod_dep
-	group by e.nome) as desconto)) / (select count(*) from empregado where lotacao = depart.cod_dep ),2 ) 
-as "Salario Promedio",
+	group by e.nome) as desconto)) 
+/ (select count(*) from empregado where lotacao = depart.cod_dep ),2 ) as "Salario Promedio",
 round(max(totalSalario),2) as "Mayor Salario",
 CASE 
 WHEN min(totalSalario) = 0 then min(totalSalario)
@@ -46,9 +46,12 @@ LEFT join emp_venc ev
 on ev.matr = e.matr
 left join departamento d
 on d.cod_dep = e.lotacao 
-group by e.nome,e.matr,d.nome,d.cod_dep
-) dados inner join 
-departamento depart 
+group by e.nome,e.matr,d.nome,d.cod_dep) dados 
+inner join departamento depart 
 on depart.cod_dep = dados.cod_dep
 group by depart.nome,depart.cod_dep
 order by "Salario Promedio" desc
+
+--SUBMISSION # 24835889
+--PROBLEM: 2991 - Department Statistics
+--ANSWER: Accepted
